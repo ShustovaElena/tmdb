@@ -4,27 +4,28 @@ import { IMG_URL } from '../../constants';
 import GradeIcon from '@mui/icons-material/Grade';
 
 export const MovieCard = (props: IMovie) => {
-  const {poster_path, title, vote_average} = props;
+  const {poster_path, title, vote_average, release_date} = props;
   const posterUrl = `${IMG_URL}/${poster_path}`;
+  const releaseYear = release_date.split('-')[0];
 
   return (
-    <Card sx={{ width: 180, height: 320, margin: 2, position: 'relative' }}>
+    <Card sx={{ width: 200, height: 310, margin: 2, position: 'relative' }}>
     <CardActionArea>
       <CardMedia
         component="img"
-        height="140"
         image={posterUrl}
         alt={title}
         sx={{ height: 250 }}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h6" component="p" sx={{ fontSize: 12, margin: 0, width: 170 }}>
+      <CardContent sx={{ backgroundColor: 'var(--card-color)', color: '#fff', padding: '10px'}}>
+        <Typography gutterBottom variant="h6" component="p" sx={{ fontSize: 12, margin: 0 }}>
           {title}
         </Typography>
-        <Box sx={{ display: 'flex', position: 'absolute', top: 2, left: 140 }}>
+        <Box sx={{ display: 'flex', position: 'absolute', top: 2, right: 5 }}>
           <GradeIcon sx={{ color: 'yellow' }} fontSize="large" />
-          <Typography variant="body2" color="text.secondary" sx={{ fontSize: 9, paddingBottom: 2, position: 'absolute', top: 12, left: 11 }}>{vote_average}</Typography>
+          <Typography variant="body2" color="secondary" sx={{ fontSize: 9, fontWeight: 'bold', position: 'absolute', top: 12, left: 11 }}>{vote_average}</Typography>
         </Box>
+        <Typography variant="body2" color="secondary" sx={{ fontSize: 10, marginBottom: 3 }}>{releaseYear}</Typography>
       </CardContent>
     </CardActionArea>
   </Card>
