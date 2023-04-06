@@ -14,6 +14,7 @@ export const Search = () => {
   useEffect(() => {
     if (deferredText !== '') {
       dispatch(getDataBySearch(deferredText));
+      dispatch({ type: 'SET_SEARCH_NAME', payload: deferredText });
     }
   }, [deferredText])
 

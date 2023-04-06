@@ -2,7 +2,9 @@ import { IState, IAction } from './types';
 
 const initialState: IState = {
   movies: [],
-  filterName: 'popularity.desc'
+  filterName: 'popularity.desc',
+  searchName: '',
+  totalPages: 0
 };
 
 export const movieReducer = (state: IState = initialState, action: any) => {
@@ -21,6 +23,18 @@ export const movieReducer = (state: IState = initialState, action: any) => {
       return {
         ...state,
         filterName: action.payload,
+      }
+    }
+    case 'SET_TOTAL_PAGES': {
+      return {
+        ...state,
+        totalPages: action.payload,
+      }
+    }
+    case 'SET_SEARCH_NAME': {
+      return {
+        ...state,
+        searchName: action.payload,
       }
     }
     default:

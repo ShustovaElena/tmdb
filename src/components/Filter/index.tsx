@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from "../../store/hooks";
 
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -18,17 +17,16 @@ export const Filter = () => {
 
   const handleChange = (event: SelectChangeEvent) => {
     setFilterName(event.target.value);
+    dispatch({ type: 'SET_SEARCH_NAME', payload: '' });
   };
 
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 140, position: 'absolute', top: -30, right: 90 }} size="small">
-        <InputLabel color='secondary' sx={{ color: 'var(--text-color)'}}>Filter</InputLabel>
         <Select
           value={filterName}
           onChange={handleChange}
           autoWidth
-          label="Filter"
           color='secondary'
           sx={{ color: 'var(--text-color)'}}
         >

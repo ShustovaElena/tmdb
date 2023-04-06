@@ -4,14 +4,19 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
 import { getMovies } from '../../api/movie';
+import { getDataBySearch } from '../../api/search';
 
 export const Paginator = () => {
   const [page, setPage] = useState(1);
   const dispatch = useAppDispatch();  
-  const { filterName } = useAppSelector((state) => state.movies);
+  const { filterName, totalPages, searchName } = useAppSelector((state) => state.movies);
 
-  useEffect(() => {
-    dispatch(getMovies(filterName, page));
+  useEffect(() => {    
+    if (searchName !== '') {
+      dispatch(getDataBySearch(searchName, page));
+    } else {
+      dispatch(getMovies(filterName, page));
+    }
   }, [page]);
 
   useEffect(() => {
@@ -25,7 +30,7 @@ export const Paginator = () => {
 
   return (
     <Box sx={{ margin: '0 auto', padding: '10px', width: '35%'}}>
-      <Pagination count={500} color="secondary" page={page} onChange={handleChange} />
+      <Pagination count={totalPages} color="secondary" page={page} onChange={handleChange} />
     </Box>
   );
 }

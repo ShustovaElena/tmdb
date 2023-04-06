@@ -1,6 +1,8 @@
 export interface IState {
   movies: IMovie[],
-  filterName: string
+  filterName: string,
+  totalPages: number,
+  searchName: string
 }
 
 export interface IMovie {
