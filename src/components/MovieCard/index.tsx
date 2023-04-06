@@ -2,15 +2,21 @@ import { CardActionArea, Box, Typography, CardMedia, CardContent, Card } from '@
 import { IMovie } from '../../store/reducers/types';
 import { IMG_URL } from '../../constants';
 import GradeIcon from '@mui/icons-material/Grade';
+import { Link } from 'react-router-dom';
 
 export const MovieCard = (props: IMovie) => {
   const {poster_path, title, vote_average, release_date} = props;
   const posterUrl = `${IMG_URL}/${poster_path}`;
   const releaseYear = release_date ? release_date.split('-')[0] : 'none';
 
+  const handleMovieClick = () => {
+    console.log('handleMovieClick');
+    
+  };
+
   return (
     <Card sx={{ width: 200, height: 310, margin: 2, position: 'relative' }}>
-    <CardActionArea>
+    <CardActionArea onClick={handleMovieClick} component={Link} to="/movie">
       <CardMedia
         component="img"
         image={posterUrl}
