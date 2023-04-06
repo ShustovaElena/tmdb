@@ -23,18 +23,15 @@ export const Filter = () => {
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 140, position: 'absolute', top: -30, right: 90 }} size="small">
-        <InputLabel color='secondary' sx={{ color: 'white'}}>Filter</InputLabel>
+        <InputLabel color='secondary' sx={{ color: 'var(--text-color)'}}>Filter</InputLabel>
         <Select
           value={filterName}
           onChange={handleChange}
           autoWidth
           label="Filter"
           color='secondary'
-          sx={{ color: 'white'}}
+          sx={{ color: 'var(--text-color)'}}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           <MenuItem value={'popularity.desc'}>Сurrent popular</MenuItem>
           <MenuItem value={'vote_average.desc'}>High rating</MenuItem>
           <MenuItem value={'release_date.desc'}>Recently released</MenuItem>
