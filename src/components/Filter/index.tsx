@@ -9,12 +9,11 @@ import { getMovies } from '../../api/movie';
 
 export const Filter = () => {
   const dispatch = useAppDispatch();  
-  const [filterName, setFilterName] = useState('');
+  const [filterName, setFilterName] = useState('popularity.desc');
 
   useEffect(() => {
-    console.log(filterName);
-    
     dispatch(getMovies(filterName));
+    dispatch({type: 'SET_FILTER_NAME', payload: filterName});
   }, [filterName]);
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -29,7 +28,6 @@ export const Filter = () => {
           value={filterName}
           onChange={handleChange}
           autoWidth
-          autoFocus
           label="Filter"
           color='secondary'
           sx={{ color: 'white'}}

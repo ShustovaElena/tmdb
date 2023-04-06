@@ -1,7 +1,8 @@
 import { IState, IAction } from './types';
 
 const initialState: IState = {
-  movies: []
+  movies: [],
+  filterName: 'popularity.desc'
 };
 
 export const movieReducer = (state: IState = initialState, action: any) => {
@@ -14,6 +15,12 @@ export const movieReducer = (state: IState = initialState, action: any) => {
     }
     case 'LOAD_MOVIES_FAILURE': {
       return {
+      }
+    }
+    case 'SET_FILTER_NAME': {
+      return {
+        ...state,
+        filterName: action.payload,
       }
     }
     default:

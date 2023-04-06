@@ -6,7 +6,7 @@ import GradeIcon from '@mui/icons-material/Grade';
 export const MovieCard = (props: IMovie) => {
   const {poster_path, title, vote_average, release_date} = props;
   const posterUrl = `${IMG_URL}/${poster_path}`;
-  const releaseYear = release_date.split('-')[0];
+  const releaseYear = release_date ? release_date.split('-')[0] : 'none';
 
   return (
     <Card sx={{ width: 200, height: 310, margin: 2, position: 'relative' }}>
