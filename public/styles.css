@@ -1,0 +1,21 @@
+:root {
+  --text-color: #fff;
+  --background-color: #2e2e2e;
+  --card-color: #292929;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes animation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
