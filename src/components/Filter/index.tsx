@@ -21,8 +21,8 @@ export const Filter = () => {
   };
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, minWidth: 140, position: 'absolute', top: -30, right: 90 }} size="small">
+    <div style={{ margin: '0 auto', width: '200px' }}>
+      <FormControl sx={{ m: 1, minWidth: 140 }} size="small">
         <Select
           value={filterName}
           onChange={handleChange}

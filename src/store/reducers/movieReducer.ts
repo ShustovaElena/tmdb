@@ -4,7 +4,8 @@ const initialState: IState = {
   movies: [],
   filterName: 'popularity.desc',
   searchName: '',
-  totalPages: 0
+  totalPages: 0,
+  movie: {}
 };
 
 export const movieReducer = (state: IState = initialState, action: any) => {
@@ -35,6 +36,12 @@ export const movieReducer = (state: IState = initialState, action: any) => {
       return {
         ...state,
         searchName: action.payload,
+      }
+    }
+    case 'LOAD_MOVIE_SUCCESS': {
+      return {
+        ...state,
+        movie: action.payload,
       }
     }
     default:

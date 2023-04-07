@@ -1,4 +1,4 @@
-import { BASE_URL } from './../constants';
+import { BASE_URL, MOVIE_BY_ID_URL, API_KEY } from './../constants';
 import { Dispatch } from 'redux';
 
 export const getMovies = (filterName: string, pageNumber: number = 1) => {
@@ -10,5 +10,16 @@ export const getMovies = (filterName: string, pageNumber: number = 1) => {
         dispatch({ type: 'SET_TOTAL_PAGES', payload: data.total_pages });
       },
       err => dispatch({ type: 'LOAD_MOVIES_FAILURE', err })
+    );
+}
+
+export const getMovieById = (id: number) => {
+  return (dispatch: Dispatch) => fetch(`${MOVIE_BY_ID_URL}${id}?api_key=${API_KEY}`)
+    .then(res => res.json())
+    .then(
+      data => {
+        dispatch({ type: 'LOAD_MOVIE_SUCCESS', payload: data });
+      },
+      err => dispatch({ type: 'LOAD_MOVIE_FAILURE', err })
     );
 }
