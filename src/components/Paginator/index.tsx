@@ -29,8 +29,8 @@ export const Paginator = () => {
   };
 
   return (
-    <Box sx={{ margin: '0 auto', padding: '10px', width: '35%'}}>
-      <Pagination count={totalPages} color="secondary" page={page} onChange={handleChange} />
+    <Box sx={{ margin: '0 auto', padding: '10px', width: '400px'}}>
+      <Pagination count={(totalPages > 500) ? 500 : totalPages} color="secondary" page={page} onChange={handleChange} />
     </Box>
   );
 }

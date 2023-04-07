@@ -6,6 +6,7 @@ import { Cards } from "../../components/Cards";
 import { Filter } from "../../components/Filter";
 import { Box } from "@mui/material";
 import { Paginator } from "../../components/Paginator";
+import { Header } from "../../components/Header";
 
 export const MainPage = () => {
   const dispatch = useAppDispatch();  
@@ -17,6 +18,7 @@ export const MainPage = () => {
 
   return (
     <Box sx={{ position: 'relative' }}>
+      <Header />
       <Filter />
       <Cards />
       <Paginator />
