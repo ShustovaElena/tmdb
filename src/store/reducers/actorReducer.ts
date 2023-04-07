@@ -13,16 +13,10 @@ export const actorReducer = (state: IState = initialState, action: any) => {
       return {
       }
     }
-    case 'SET_TOTAL_PAGES_ACTORS': {
+    case 'SET_CURRENT_PAGE': {
       return {
         ...state,
-        actorsTotalPages: action.payload,
-      }
-    }
-    case 'SET_PAGINATION_PAGE': {
-      return {
-        ...state,
-        pagePagination: action.payload,
+        currentPage: action.payload,
       }
     }
     default:

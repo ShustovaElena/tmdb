@@ -5,14 +5,16 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 export const NavBar = () => {
   const dispatch = useAppDispatch();  
-  const { pagePagination } = useAppSelector((state) => state.actors);
+  const { currentPage } = useAppSelector((state) => state.actors);
 
   const handleClick = () => {
-    console.log('handleClick');
-    if (pagePagination === 'movies') {
-      dispatch({ type: 'SET_PAGINATION_PAGE', payload: 'actors' });
-    } else {
-      dispatch({ type: 'SET_PAGINATION_PAGE', payload: 'movies' });
+    if (currentPage === 'movies') {
+      dispatch({ type: 'SET_CURRENT_PAGE', payload: 'actors' });
+      dispatch({ type: 'SET_SEARCH_NAME', payload: '' });
+    } 
+    if (currentPage === 'actors') {
+      dispatch({ type: 'SET_CURRENT_PAGE', payload: 'movies' });
+      dispatch({ type: 'SET_SEARCH_NAME', payload: '' });
     }
   }
   return (
