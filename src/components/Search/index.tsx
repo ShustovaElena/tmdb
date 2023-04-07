@@ -1,20 +1,27 @@
 import { useDeferredValue, useEffect, useState } from "react";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
-import { getDataBySearch } from '../../api/search';
+import { getDataBySearch, getPersonBySearch } from '../../api/search';
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 export const Search = () => {
+  const { currentPage } = useAppSelector((state) => state.actors);
   const dispatch = useAppDispatch();  
   const [userInput, setUserInput] = useState('');
   const [isSearch, setIsSearch] = useState(false);
   const deferredText = useDeferredValue(userInput);
 
-  useEffect(() => {
+  useEffect(() => {  
     if (deferredText !== '') {
-      dispatch(getDataBySearch(deferredText));
-      dispatch({ type: 'SET_SEARCH_NAME', payload: deferredText });
+      if (currentPage === 'movies') {
+        dispatch(getDataBySearch(deferredText));
+        dispatch({ type: 'SET_SEARCH_NAME', payload: deferredText });
+      }
+      if (currentPage === 'actors') {
+        dispatch(getPersonBySearch(deferredText));
+        dispatch({ type: 'SET_SEARCH_NAME', payload: deferredText });
+      }
     }
   }, [deferredText])
 
