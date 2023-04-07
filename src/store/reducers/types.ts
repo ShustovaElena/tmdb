@@ -3,7 +3,9 @@ export interface IState {
   filterName: string,
   totalPages: number,
   searchName: string,
-  movie: IMovie | {}
+  movie: IMovie | {},
+  actors: IActors[],
+  actorsTotalPages: number
 }
 
 export type IMovies = {
@@ -82,4 +84,32 @@ type ISpokenLanguages = {
   english_name: string,
   iso_639_1: string,
   name: string
+}
+
+export type IActors = {
+  adult: boolean,
+  gender: number,
+  id: number,
+  known_for: IActorsKnownFor[],
+  known_for_department: string,
+  name: string,
+  popularity: number,
+  profile_path: string
+}
+
+type IActorsKnownFor = {
+  adult: boolean,
+  backdrop_path: string,
+  genre_ids: number[],
+  id: number,
+  media_type: string,
+  original_language: string,
+  original_title: string,
+  overview: string,
+  poster_path: string,
+  release_date: string,
+  title: string,
+  video: boolean,
+  vote_average: number,
+  vote_count: number
 }

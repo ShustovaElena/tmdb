@@ -1,10 +1,10 @@
 import { SEARCH_URL } from './../constants';
-import { Dispatch } from 'redux';
+import { Action, Dispatch } from 'redux';
 
 export const getDataBySearch = (searchName: string, pageNumber: number = 1) => {
   const search = searchName.split(' ').join('+');
 
-  return (dispatch: Dispatch) => fetch(`${SEARCH_URL}&query=${search}&page=${pageNumber}`)
+  return (dispatch: Dispatch<Action>) => fetch(`${SEARCH_URL}&query=${search}&page=${pageNumber}`)
     .then(res => res.json())
     .then(
       data => {

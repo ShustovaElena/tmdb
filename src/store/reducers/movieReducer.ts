@@ -1,12 +1,5 @@
+import { initialState } from './initialState';
 import { IState, IAction } from './types';
-
-const initialState: IState = {
-  movies: [],
-  filterName: 'popularity.desc',
-  searchName: '',
-  totalPages: 0,
-  movie: {}
-};
 
 export const movieReducer = (state: IState = initialState, action: any) => {
   switch (action.type) {

@@ -1,8 +1,8 @@
 import { BASE_URL, MOVIE_BY_ID_URL, API_KEY } from './../constants';
-import { Dispatch } from 'redux';
+import { Action, Dispatch } from 'redux';
 
 export const getMovies = (filterName: string, pageNumber: number = 1) => {
-  return (dispatch: Dispatch) => fetch(`${BASE_URL}&sort_by=${filterName}&page=${pageNumber}`)
+  return (dispatch: Dispatch<Action>) => fetch(`${BASE_URL}&sort_by=${filterName}&page=${pageNumber}`)
     .then(res => res.json())
     .then(
       data => {
@@ -14,7 +14,7 @@ export const getMovies = (filterName: string, pageNumber: number = 1) => {
 }
 
 export const getMovieById = (id: number) => {
-  return (dispatch: Dispatch) => fetch(`${MOVIE_BY_ID_URL}${id}?api_key=${API_KEY}`)
+  return (dispatch: Dispatch<Action>) => fetch(`${MOVIE_BY_ID_URL}${id}?api_key=${API_KEY}`)
     .then(res => res.json())
     .then(
       data => {

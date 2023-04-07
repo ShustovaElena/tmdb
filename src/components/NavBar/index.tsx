@@ -7,7 +7,7 @@ export const NavBar = () => {
     <Container sx={{ width: '60%', display: 'flex', justifyContent: 'flex-end' }}>
       <Search />
       <Button variant="text" color="secondary" component={Link} to="/">Home</Button>
-      <Button variant="text" color="secondary">Popular actors</Button>
+      <Button variant="text" color="secondary" component={Link} to="/actors">Popular actors</Button>
     </Container> 
   );
 }
