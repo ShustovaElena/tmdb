@@ -5,17 +5,26 @@ import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
 import { getMovies } from '../../api/movie';
 import { getDataBySearch } from '../../api/search';
+import { getActors } from '../../api/actor';
 
 export const Paginator = () => {
   const [page, setPage] = useState(1);
   const dispatch = useAppDispatch();  
   const { filterName, totalPages, searchName } = useAppSelector((state) => state.movies);
+  const { pagePagination } = useAppSelector((state) => state.actors);
 
   useEffect(() => {    
-    if (searchName !== '') {
-      dispatch(getDataBySearch(searchName, page));
-    } else {
-      dispatch(getMovies(filterName, page));
+    console.log('pagePagination', pagePagination);
+    
+    if (pagePagination === 'movies') {
+      if (searchName !== '') {
+        dispatch(getDataBySearch(searchName, page));
+      } else {
+        dispatch(getMovies(filterName, page));
+      }
+    } 
+    if (pagePagination === 'actors') {
+      dispatch(getActors(page));
     }
   }, [page]);
 

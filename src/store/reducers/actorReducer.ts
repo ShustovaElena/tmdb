@@ -19,6 +19,12 @@ export const actorReducer = (state: IState = initialState, action: any) => {
         actorsTotalPages: action.payload,
       }
     }
+    case 'SET_PAGINATION_PAGE': {
+      return {
+        ...state,
+        pagePagination: action.payload,
+      }
+    }
     default:
       return state
   }

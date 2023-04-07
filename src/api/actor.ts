@@ -2,6 +2,8 @@ import { PERSON_URL } from './../constants';
 import { Dispatch } from 'redux';
 
 export const getActors = (pageNumber: number = 1) => {
+  console.log(pageNumber);
+  
   return (dispatch: Dispatch) => fetch(`${PERSON_URL}&&page=${pageNumber}`)
     .then(res => res.json())
     .then(

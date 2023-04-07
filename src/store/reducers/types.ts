@@ -5,7 +5,8 @@ export interface IState {
   searchName: string,
   movie: IMovie | {},
   actors: IActors[],
-  actorsTotalPages: number
+  actorsTotalPages: number,
+  pagePagination: string
 }
 
 export type IMovies = {
