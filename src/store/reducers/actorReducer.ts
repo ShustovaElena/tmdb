@@ -19,6 +19,18 @@ export const actorReducer = (state: IState = initialState, action: any) => {
         currentPage: action.payload,
       }
     }
+    case 'LOAD_ACTOR_INFO_SUCCESS': {
+      return {
+        ...state,
+        actorInfo: action.payload,
+      }
+    }
+    case 'LOAD_ACTOR_MOVIES_SUCCESS': {
+      return {
+        ...state,
+        actorMovie: action.payload,
+      }
+    }
     default:
       return state
   }

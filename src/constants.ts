@@ -7,3 +7,4 @@ export const MOVIE_BY_ID_URL = `https://api.themoviedb.org/3/movie/`;
 export const PERSON_URL = `https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=en-US`;
 export const SEARCH_PERSON_URL = `
 https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US`;
+export const PERSON_BY_ID_URL = `https://api.themoviedb.org/3/person/`;

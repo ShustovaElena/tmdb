@@ -2,16 +2,23 @@ import { CardActionArea, Typography, CardMedia, CardContent, Card } from '@mui/m
 import { IMG_URL } from '../../constants';
 import { Link } from 'react-router-dom';
 import { IActors } from '../../store/reducers/types';
+import { useAppDispatch } from '../../store/hooks';
+import { getMoviesPersonById, getPersonById } from '../../api/actor';
 
 export const ActorCard = (props: IActors) => {
-  const { name, profile_path } = props;
+  const dispatch = useAppDispatch();
+  const { name, profile_path, id } = props;
 
   const posterUrl = `${IMG_URL}/${profile_path}`;
 
+  const handleActorClick = () => {
+    dispatch(getPersonById(id));
+    dispatch(getMoviesPersonById(id));
+  };
+
   return (
     <Card sx={{ width: 150, height: 280, margin: 2, position: 'relative' }}>
-    <CardActionArea> 
-       {/* component={Link} to={`/${title}`} */}
+    <CardActionArea onClick={handleActorClick} component={Link} to={`/actors/${name}`} > 
       <CardMedia
         component="img"
         image={posterUrl}
