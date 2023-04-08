@@ -12,13 +12,6 @@ export const MoviePage = () => {
   const { movie } = useAppSelector(state => state.movies);
   const { backdrop_path, poster_path, title, genres, release_date, runtime, budget, vote_average, overview, homepage } = movie;
   const releaseYear = release_date ? (release_date as string).split('-')[0] : 'none';
-
-  // let genresList = null;
-  // if (genres) {
-  //   genresList = (genres as IGenres[]).map((item: IGenres) => item.name);
-  // }
-
-  console.log(movie);
   
   return (
     <Box sx={{ background: `url(${IMG_URL}${backdrop_path ? backdrop_path : poster_path}) no-repeat`, backgroundSize: 'cover', height: '100vh'}}>
