@@ -1,5 +1,5 @@
 export interface IState {
-  movies: IMovies[],
+  movies: IMovies[] | null,
   filterName: string,
   totalPages: number,
   searchName: string,
