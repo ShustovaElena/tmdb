@@ -7,5 +7,7 @@ export const initialState: IState = {
   totalPages: 0,
   movie: {},
   actors: [],
-  currentPage: 'movies'
+  currentPage: 'movies',
+  actorInfo: {},
+  actorMovie: []
 };

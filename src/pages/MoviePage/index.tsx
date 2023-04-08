@@ -12,13 +12,6 @@ export const MoviePage = () => {
   const { movie } = useAppSelector(state => state.movies);
   const { backdrop_path, poster_path, title, genres, release_date, runtime, budget, vote_average, overview, homepage } = movie;
   const releaseYear = release_date ? (release_date as string).split('-')[0] : 'none';
-
-  let genresList = null;
-  if (genres) {
-    genresList = (genres as IGenres[]).map((item: IGenres) => item.name);
-  }
-
-  console.log(movie);
   
   return (
     <Box sx={{ background: `url(${IMG_URL}${backdrop_path ? backdrop_path : poster_path}) no-repeat`, backgroundSize: 'cover', height: '100vh'}}>
@@ -33,13 +26,14 @@ export const MoviePage = () => {
             {title}
           </Typography>
           <Box sx={{ minWidth: '70%', display: 'flex', gap: '15px', justifyContent: 'flex-start', flexWrap: 'wrap', color: 'var(--text-color)', fontSize: '0.8rem', paddingBottom: '20px' }}>
-            {genresList && genresList.map((genre) => {
+            {genres && (genres as IGenres[]).map(({name, id}) => {
               return <Typography 
               variant="h5" 
               component="h5" 
               sx={{ display: 'inline', fontSize: '1.3rem' }}
+              key={id}
             >
-              {`${genre}  `} 
+              {`${name}  `} 
             </Typography>
             })}
             <Typography variant="h5" component="h5"><CalendarMonthIcon fontSize="small" sx={{ color: 'var(--title-color)'}}/>{releaseYear}</Typography>
@@ -47,7 +41,7 @@ export const MoviePage = () => {
           </Box>
           <Box sx={{ maWidth: '60%', display: 'flex', gap: '25px', justifyContent: 'flex-start', color: 'var(--text-color)', fontSize: '0.8rem' }}>
               <Typography variant="h5" component="h5"><GradeIcon fontSize="small" sx={{ color: 'var(--title-color)' }} />{vote_average}</Typography>
-              {budget !== 0 && <Typography variant="h5" component="h5"><PaidIcon fontSize="small" sx={{ color: 'var(--title-color)' }} />{(budget as number).toLocaleString()}</Typography>}
+              {budget !== 0 && <Typography variant="h5" component="h5"><PaidIcon fontSize="small" sx={{ color: 'var(--title-color)' }} />{budget}</Typography>}
             </Box>
         </Box>
         <Box sx={{ width: '50%', color: 'var(--text-color)'}}>

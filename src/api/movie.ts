@@ -14,6 +14,8 @@ export const getMovies = (filterName: string, pageNumber: number = 1) => {
 }
 
 export const getMovieById = (id: number) => {
+  console.log('getMovieById', id);
+  
   return (dispatch: Dispatch<Action>) => fetch(`${MOVIE_BY_ID_URL}${id}?api_key=${API_KEY}`)
     .then(res => res.json())
     .then(
