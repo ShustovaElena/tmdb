@@ -20,8 +20,8 @@ export const NavBar = () => {
   return (
     <Container sx={{ width: '60%', display: 'flex', justifyContent: 'flex-end' }}>
       <Search />
-      <Button variant="text" color="secondary" component={Link} to="/" onClick={handleClick}>Home</Button>
-      <Button variant="text" color="secondary" component={Link} to="/actors" onClick={handleClick}>Popular actors</Button>
+        <Button variant="text" color="secondary" component={Link} to="/" onClick={handleClick}>Home</Button>
+        <Button variant="text" color="secondary" component={Link} to="/actors" onClick={handleClick}>Popular actors</Button>
     </Container> 
   );
 }

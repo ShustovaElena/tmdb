@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { CardsActors } from "../../components/CardsActors";
 import { Header } from "../../components/Header";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { getActors } from "../../api/actor";
 import { Paginator } from "../../components/Paginator";
+import { Preloader } from "../../components/Preloader";
 
 export const ActorsPage = () => {
-  const dispatch = useAppDispatch();  
+  const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector(state => state.movies);
 
   useEffect(() => {
     dispatch(getActors());
@@ -14,7 +16,7 @@ export const ActorsPage = () => {
   return (
     <>
       <Header />
-      <CardsActors />
+      {isLoading ? <Preloader /> : <CardsActors />}
       <Paginator />
     </>
   );

@@ -1,13 +1,14 @@
 export interface IState {
-  movies: IMovies[],
+  movies: IMovies[] | [],
   filterName: string,
   totalPages: number,
   searchName: string,
   movie: IMovie | {},
   actors: IActors[],
   currentPage: string,
-  actorInfo: IActorInfo | {}
-  actorMovie: IActorMovie[]
+  actorInfo: IActorInfo | {},
+  actorMovie: IActorMovie[],
+  isLoading: boolean
 }
 
 export type IMovies = {

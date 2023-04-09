@@ -7,20 +7,21 @@ import { Filter } from "../../components/Filter";
 import { Box } from "@mui/material";
 import { Paginator } from "../../components/Paginator";
 import { Header } from "../../components/Header";
+import { Preloader } from "../../components/Preloader";
 
 export const MainPage = () => {
   const dispatch = useAppDispatch();  
-  const { filterName } = useAppSelector((state) => state.movies);
-
+  const { filterName, isLoading } = useAppSelector((state) => state.movies);
+  
   useEffect(() => {
     dispatch(getMovies(filterName));
-  }, [dispatch, filterName])
+  }, [filterName])
 
   return (
     <Box sx={{ position: 'relative' }}>
       <Header />
       <Filter />
-      <Cards />
+      {isLoading ? <Preloader /> : <Cards />}
       <Paginator />
     </Box>
   );
