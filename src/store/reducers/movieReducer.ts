@@ -9,10 +9,6 @@ export const movieReducer = (state: IState = initialState, action: any) => {
         movies: action.payload,
       }
     }
-    case 'LOAD_MOVIES_FAILURE': {
-      return {
-      }
-    }
     case 'SET_FILTER_NAME': {
       return {
         ...state,

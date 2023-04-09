@@ -7,10 +7,11 @@ import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrow
 import { useEffect, useState } from "react";
 import { IActorMovie } from "../../store/reducers/types";
 import { MovieCard } from "../../components/MovieCard";
+import { PageNotFound } from "../PageNotFound";
 
 export const ActorInfoPage = () => {
   const { actorInfo, actorMovie } = useAppSelector((state) => state.actors);
-  const { name, biography, birthday, deathday, place_of_birth, popularity, profile_path } = actorInfo;
+  const { id, name, biography, birthday, deathday, place_of_birth, popularity, profile_path } = actorInfo;
   const [overview, setOverview] = useState('');
   const [textButton, setTextButton] = useState('more');
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +41,7 @@ export const ActorInfoPage = () => {
     setIsOpen(!isOpen);
   }
   
+  if (id) {
   return (
     <>
       <Box sx={{ background: `url(${IMG_URL}${profile_path}) no-repeat`, backgroundSize: '35% 100%', backgroundPosition: '100% 0', minHeight: '100vh'}}>
@@ -74,4 +76,7 @@ export const ActorInfoPage = () => {
     </Box>}
   </>
   );
+  } else {
+    return <PageNotFound />
+  }
 }

@@ -1,7 +1,7 @@
 import { IState } from "./types";
 
 export const initialState: IState = {
-  movies: null,
+  movies: [],
   filterName: 'popularity.desc',
   searchName: '',
   totalPages: 0,

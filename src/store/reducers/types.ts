@@ -1,12 +1,12 @@
 export interface IState {
-  movies: IMovies[] | null,
+  movies: IMovies[] | [],
   filterName: string,
   totalPages: number,
   searchName: string,
   movie: IMovie | {},
   actors: IActors[],
   currentPage: string,
-  actorInfo: IActorInfo | {}
+  actorInfo: IActorInfo | {},
   actorMovie: IActorMovie[]
 }
 

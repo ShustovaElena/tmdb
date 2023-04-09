@@ -7,12 +7,14 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import HourglassFullIcon from '@mui/icons-material/HourglassFull';
 import GradeIcon from '@mui/icons-material/Grade';
 import PaidIcon from '@mui/icons-material/Paid';
+import { PageNotFound } from "../PageNotFound";
 
 export const MoviePage = () => {
   const { movie } = useAppSelector(state => state.movies);
-  const { backdrop_path, poster_path, title, genres, release_date, runtime, budget, vote_average, overview, homepage } = movie;
+  const { id, backdrop_path, poster_path, title, genres, release_date, runtime, budget, vote_average, overview, homepage } = movie;
   const releaseYear = release_date ? (release_date as string).split('-')[0] : 'none';
   
+  if (id) {
   return (
     <Box sx={{ background: `url(${IMG_URL}${backdrop_path ? backdrop_path : poster_path}) no-repeat`, backgroundSize: 'cover', height: '100vh'}}>
       <Header />
@@ -55,4 +57,7 @@ export const MoviePage = () => {
       </Container>
     </Box>
   );
+  } else {
+    return <PageNotFound />
+  }
 } 

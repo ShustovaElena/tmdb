@@ -9,10 +9,6 @@ export const actorReducer = (state: IState = initialState, action: any) => {
         actors: action.payload,
       }
     }
-    case 'LOAD_ACTORS_FAILURE': {
-      return {
-      }
-    }
     case 'SET_CURRENT_PAGE': {
       return {
         ...state,

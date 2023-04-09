@@ -1,12 +1,12 @@
 import { CardActionArea, Box, Typography, CardMedia, CardContent, Card } from '@mui/material';
-import { IActorMovie, IMovies } from '../../store/reducers/types';
+import { IMovies } from '../../store/reducers/types';
 import { IMG_URL } from '../../constants';
 import GradeIcon from '@mui/icons-material/Grade';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../store/hooks';
 import { getMovieById } from '../../api/movie';
 
-export const MovieCard = (props: IMovies | IActorMovie) => {
+export const MovieCard = (props: IMovies) => {
   const {id, poster_path, title, vote_average, release_date} = props;
   const dispatch = useAppDispatch();
 
@@ -14,7 +14,7 @@ export const MovieCard = (props: IMovies | IActorMovie) => {
   const releaseYear = release_date ? release_date.split('-')[0] : 'none';
 
   const handleMovieClick = () => {
-    dispatch(getMovieById(id));
+    dispatch(getMovieById(id))
   };
 
   return (
