@@ -33,6 +33,12 @@ export const movieReducer = (state: IState = initialState, action: any) => {
         movie: action.payload,
       }
     }
+    case 'SET_IS_LOADING': {
+      return {
+        ...state,
+        isLoading: action.payload,
+      }
+    }
     default:
       return state
   }

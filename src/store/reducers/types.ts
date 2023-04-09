@@ -7,7 +7,8 @@ export interface IState {
   actors: IActors[],
   currentPage: string,
   actorInfo: IActorInfo | {},
-  actorMovie: IActorMovie[]
+  actorMovie: IActorMovie[],
+  isLoading: boolean
 }
 
 export type IMovies = {

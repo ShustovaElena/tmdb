@@ -15,7 +15,6 @@ export const ActorInfoPage = () => {
   const [overview, setOverview] = useState('');
   const [textButton, setTextButton] = useState('more');
   const [isOpen, setIsOpen] = useState(false);
-  console.log(actorMovie);
 
   useEffect(() => {
     if (biography) {

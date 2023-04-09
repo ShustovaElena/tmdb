@@ -9,5 +9,6 @@ export const initialState: IState = {
   actors: [],
   currentPage: 'movies',
   actorInfo: {},
-  actorMovie: []
+  actorMovie: [],
+  isLoading: false
 };

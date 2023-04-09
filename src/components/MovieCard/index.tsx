@@ -14,7 +14,7 @@ export const MovieCard = (props: IMovies) => {
   const releaseYear = release_date ? release_date.split('-')[0] : 'none';
 
   const handleMovieClick = () => {
-    dispatch(getMovieById(id))
+    dispatch(getMovieById(id));
   };
 
   return (
