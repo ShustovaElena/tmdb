@@ -13,7 +13,9 @@ export const Paginator = () => {
   const { filterName, totalPages, searchName } = useAppSelector((state) => state.movies);
   const { currentPage } = useAppSelector((state) => state.actors);
 
-  useEffect(() => {        
+  useEffect(() => {
+    console.log(currentPage, searchName, page);
+    
     if (currentPage === 'movies') {
       if (searchName !== '') {
         dispatch(getDataBySearch(searchName, page));

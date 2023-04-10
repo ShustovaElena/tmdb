@@ -1,8 +1,8 @@
+import { Action, Dispatch } from 'redux';
 import { BASE_URL, MOVIE_BY_ID_URL, API_KEY } from './../constants';
-import { AppThunk } from './types';
 
-export const getMovies = (filterName: string, pageNumber: number = 1): AppThunk => {
-  return (dispatch) => {
+export const getMovies = (filterName: string, pageNumber: number = 1) => {
+  return (dispatch: Dispatch<Action>) => {
     dispatch({ type: 'SET_IS_LOADING', payload: true });
     fetch(`${BASE_URL}&sort_by=${filterName}&page=${pageNumber}`)
     .then(res => res.json(), err => {throw new Error(err)})
@@ -16,8 +16,8 @@ export const getMovies = (filterName: string, pageNumber: number = 1): AppThunk 
   }
 }
 
-export const getMovieById = (id: number): AppThunk => {
-  return (dispatch) => {
+export const getMovieById = (id: number) => {
+  return (dispatch: Dispatch<Action>) => {
     dispatch({ type: 'SET_IS_LOADING', payload: true });
     fetch(`${MOVIE_BY_ID_URL}${id}?api_key=${API_KEY}`)
     .then(res => res.json(), err => {throw new Error(err)})
