@@ -4,6 +4,7 @@ import { IMG_URL } from '../../constants';
 import { Header } from "../../components/Header";
 import GradeIcon from '@mui/icons-material/Grade';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import { useEffect, useState } from "react";
 import { IActorMovie } from "../../store/reducers/types";
 import { MovieCard } from "../../components/MovieCard";
@@ -97,8 +98,8 @@ export const ActorInfoPage = () => {
             </Typography>
             </Box>
         </Container>
-        <IconButton sx={{ width: '100vw', margin: '0 auto', color: 'var(--title-color)' }} onClick={handleDetailButtonClick}>
-          <KeyboardDoubleArrowDownIcon />
+        <IconButton sx={{ width: '100vw', margin: '0 auto', color: 'var(--title-color)', animation: 'bounce 1s infinite', position: 'relative', bottom: '-15px' }} onClick={handleDetailButtonClick}>
+          {isOpen ? <KeyboardDoubleArrowUpIcon /> : <KeyboardDoubleArrowDownIcon />}
         </IconButton>
       </Box>
       {isOpen && <Box sx={{ maxWidth: '100vw', marginTop: '20px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', overflow: 'hidden'}}>
