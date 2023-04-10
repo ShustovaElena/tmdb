@@ -21,7 +21,7 @@ export const ActorCard = (props: IActors) => {
     <CardActionArea onClick={handleActorClick} component={Link} to={`/actors/${name}`} > 
       <CardMedia
         component="img"
-        image={posterUrl}
+        image={profile_path ? posterUrl : '/img/noneImg.png'}
         alt={name}
         sx={{ height: 250 }}
       />

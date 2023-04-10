@@ -22,7 +22,7 @@ export const MovieCard = (props: IMovies) => {
     <CardActionArea onClick={handleMovieClick} component={Link} to={`/${title}`}>
       <CardMedia
         component="img"
-        image={posterUrl}
+        image={poster_path ? posterUrl : '/img/noneImg.png'}
         alt={title}
         sx={{ height: 250 }}
       />
