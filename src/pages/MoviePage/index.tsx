@@ -9,6 +9,8 @@ import GradeIcon from '@mui/icons-material/Grade';
 import PaidIcon from '@mui/icons-material/Paid';
 import { PageNotFound } from "../PageNotFound";
 
+import './styles.css';
+
 export const MoviePage = () => {
   const { movie } = useAppSelector(state => state.movies);
   const { id, backdrop_path, poster_path, title, genres, release_date, runtime, budget, vote_average, overview, homepage } = movie;
@@ -24,9 +26,10 @@ export const MoviePage = () => {
         </Link>
         <Typography color="secondary">{title}</Typography>
       </Breadcrumbs>
-        <Container sx={{ display: 'flex', justifyContent: 'space-between', gap: '80px', alignItems: 'flex-end', height: '80vh'}}>
+        <Container className="movie-box" sx={{ display: 'flex', justifyContent: 'space-between', gap: '80px', alignItems: 'flex-end', height: '80vh'}}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: '10px', flexDirection: 'column' }}>
             <Typography 
+              className="movie-title"
               variant="h1" 
               component="h1" 
               sx={{ color: 'var(--title-color)', textTransform: 'uppercase', fontWeight: 900, minWidth: 400, maxWidth: 800, letterSpacing: '4px', fontSize: '5rem' }}

@@ -11,6 +11,8 @@ import { MovieCard } from "../../components/MovieCard";
 import { PageNotFound } from "../PageNotFound";
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
+import './styles.css';
+
 export const ActorInfoPage = () => {
   const { actorInfo, actorMovie } = useAppSelector((state) => state.actors);
   const { id, name, biography, birthday, deathday, place_of_birth, popularity, profile_path } = actorInfo;
@@ -68,7 +70,7 @@ export const ActorInfoPage = () => {
   if (id) {
   return (
     <>
-      <Box sx={{ background: `url(${IMG_URL}${profile_path}) no-repeat`, backgroundSize: '35% 100%', backgroundPosition: '100% 0', minHeight: '100vh', maxWidth: '100vw', overflow: 'hidden'}}>
+      <Box className="actor-box" sx={{ background: `url(${IMG_URL}${profile_path}) no-repeat`, backgroundSize: '35% 100%', backgroundPosition: '100% 0', minHeight: '100vh', maxWidth: '100vw', overflow: 'hidden'}}>
         <Header />
         <Breadcrumbs separator="›" aria-label="breadcrumb" color="secondary" sx={{ marginLeft: '120px' }}>
           <Link underline="hover" color="inherit" href="/">
@@ -80,7 +82,7 @@ export const ActorInfoPage = () => {
           <Typography color="secondary">{name}</Typography>
         </Breadcrumbs>
         <Container sx={{ display: 'flex', gap: '80px', alignItems: 'flex-end', height: '75vh', maxWidth: '100vw'}}>
-          <Box sx={{ width: '65%', display: 'flex', alignItems: 'center', gap: '10px', flexDirection: 'column', color: 'var(--text-color)' }}>
+          <Box className="actor-info-box" sx={{ width: '65%', display: 'flex', alignItems: 'center', gap: '10px', flexDirection: 'column', color: 'var(--text-color)' }}>
             <Typography 
               variant="h1" 
               component="h1" 

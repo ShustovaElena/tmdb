@@ -1,0 +1,11 @@
+@media(max-width: 780px) {
+  .actor-box {
+    background: none;
+  }
+
+  .actor-info-box {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+}

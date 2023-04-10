@@ -1,0 +1,14 @@
+@media(max-width: 780px) {
+  .movie-box {
+    flex-direction: column !important;
+    gap: 0;
+  }
+
+  .box-overview {
+    width: 100% !important;
+  }
+
+  .movie-title {
+    font-size: 3rem !important;
+  }
+}
