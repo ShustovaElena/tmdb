@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../store/hooks";
-import { Box, Button, Container, Typography, IconButton, Breadcrumbs, Link } from "@mui/material";
+import { Box, Button, Container, Typography, IconButton, Breadcrumbs, Link, Fab } from "@mui/material";
 import { IMG_URL } from '../../constants';
 import { Header } from "../../components/Header";
 import GradeIcon from '@mui/icons-material/Grade';
@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { IActorMovie } from "../../store/reducers/types";
 import { MovieCard } from "../../components/MovieCard";
 import { PageNotFound } from "../PageNotFound";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 export const ActorInfoPage = () => {
   const { actorInfo, actorMovie } = useAppSelector((state) => state.actors);
@@ -15,6 +16,7 @@ export const ActorInfoPage = () => {
   const [overview, setOverview] = useState('');
   const [textButton, setTextButton] = useState('more');
   const [isOpen, setIsOpen] = useState(false);
+  const [numShow, setNumShow] = useState(10);
 
   useEffect(() => {
     if (biography) {
@@ -49,11 +51,23 @@ export const ActorInfoPage = () => {
   const handleDetailButtonClick = () => {
     setIsOpen(!isOpen);
   }
+
+  const handleClickMore = () => {
+      setNumShow(Math.min(numShow + 10, (actorMovie as IActorMovie[]).length))
+  }
+
+  const handleFabClick = () => {
+    window.scrollTo({
+      top: 500,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
   
   if (id) {
   return (
     <>
-      <Box sx={{ background: `url(${IMG_URL}${profile_path}) no-repeat`, backgroundSize: '35% 100%', backgroundPosition: '100% 0', minHeight: '100vh', maxWidth: '100vw'}}>
+      <Box sx={{ background: `url(${IMG_URL}${profile_path}) no-repeat`, backgroundSize: '35% 100%', backgroundPosition: '100% 0', minHeight: '100vh', maxWidth: '100vw', overflow: 'hidden'}}>
         <Header />
         <Breadcrumbs separator="›" aria-label="breadcrumb" color="secondary" sx={{ marginLeft: '120px' }}>
           <Link underline="hover" color="inherit" href="/">
@@ -83,14 +97,20 @@ export const ActorInfoPage = () => {
             </Typography>
             </Box>
         </Container>
-        <IconButton id="scroll" sx={{ width: '100vw', margin: '0 auto', color: 'var(--title-color)' }} onClick={handleDetailButtonClick}>
+        <IconButton sx={{ width: '100vw', margin: '0 auto', color: 'var(--title-color)' }} onClick={handleDetailButtonClick}>
           <KeyboardDoubleArrowDownIcon />
         </IconButton>
       </Box>
-      {isOpen && <Box sx={{ maxWidth: '100vw', marginTop: '20px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-      {(actorMovie as IActorMovie[]).map((item: IActorMovie) => {
+      {isOpen && <Box sx={{ maxWidth: '100vw', marginTop: '20px', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', overflow: 'hidden'}}>
+      {(actorMovie as IActorMovie[]).slice(0, numShow).map((item: IActorMovie) => {
         return <MovieCard key={item.id} {...item}/>
       })}
+      <IconButton sx={{ width: '100vw', margin: '0 auto', color: 'var(--title-color)' }} onClick={handleClickMore}>
+        <KeyboardDoubleArrowDownIcon />
+      </IconButton>
+      <Fab color="secondary" sx={{ position: 'fixed', bottom: 20, right: 20}} onClick={handleFabClick}>
+        <ArrowUpwardIcon />
+      </Fab>
     </Box>}
   </>
   );
