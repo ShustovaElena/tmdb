@@ -1,7 +1,7 @@
 import { initialState } from './initialState';
-import { IState, IAction } from './types';
+import { IState, IMovie, Action, IMovies } from './types';
 
-export const movieReducer = (state: IState = initialState, action: any) => {
+export const movieReducer = (state: IState = initialState, action: Action<string, IMovies | IMovie | string | number | boolean>) => {
   switch (action.type) {
     case 'LOAD_MOVIES_SUCCESS': {
       return {

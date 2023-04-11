@@ -1,10 +1,10 @@
+import { Action, Dispatch } from 'redux';
 import { SEARCH_URL, SEARCH_PERSON_URL } from './../constants';
-import { AppThunk } from './types';
 
-export const getDataBySearch = (searchName: string, pageNumber: number = 1): AppThunk => {
+export const getDataBySearch = (searchName: string, pageNumber: number = 1) => {
   const search = searchName.split(' ').join('+');
 
-  return (dispatch) => {
+  return (dispatch: Dispatch<Action>) => {
     dispatch({ type: 'SET_IS_LOADING', payload: true });
     fetch(`${SEARCH_URL}&query=${search}&page=${pageNumber}`)
     .then(res => res.json(), err => {throw new Error(err)})
@@ -17,10 +17,10 @@ export const getDataBySearch = (searchName: string, pageNumber: number = 1): App
     )}
 }
 
-export const getPersonBySearch = (searchName: string, pageNumber: number = 1): AppThunk => {
+export const getPersonBySearch = (searchName: string, pageNumber: number = 1) => {
   const search = searchName.split(' ').join('+');
 
-  return (dispatch) => {
+  return (dispatch: Dispatch<Action>) => {
     dispatch({ type: 'SET_IS_LOADING', payload: true });
     fetch(`${SEARCH_PERSON_URL}&query=${search}&page=${pageNumber}`)
     .then(res => res.json(), err => {throw new Error(err)})

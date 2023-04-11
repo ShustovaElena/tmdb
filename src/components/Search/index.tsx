@@ -30,7 +30,7 @@ export const Search = () => {
   }
 
   const handleBlurSearch = () => {
-    setUserInput( '' );
+    setUserInput('');
     setIsSearch(false);
   }
 
@@ -56,7 +56,6 @@ export const Search = () => {
         onChange={handleChangeSearch}
         onBlur={handleBlurSearch}
         value={userInput}
-        autoFocus
         sx={{ opacity: 0, animation: 'animation .5s forwards'}}
     /> :
       <IconButton color="secondary" onClick={handleSearchButton}>

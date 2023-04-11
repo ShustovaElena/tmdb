@@ -1,7 +1,7 @@
 import { initialState } from './initialState';
-import { IState } from './types';
+import { Action, IActorInfo, IActorMovie, IActors, IState } from './types';
 
-export const actorReducer = (state: IState = initialState, action: any) => {
+export const actorReducer = (state: IState = initialState, action: Action<string, IActorInfo | IActors | number | IActorMovie>) => {
   switch (action.type) {
     case 'LOAD_ACTORS_SUCCESS': {
       return {

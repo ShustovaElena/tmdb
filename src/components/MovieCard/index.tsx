@@ -22,7 +22,7 @@ export const MovieCard = (props: IMovies) => {
     <CardActionArea onClick={handleMovieClick} component={Link} to={`/${title}`}>
       <CardMedia
         component="img"
-        image={posterUrl}
+        image={poster_path ? posterUrl : '/img/noneImg.png'}
         alt={title}
         sx={{ height: 250 }}
       />
@@ -32,7 +32,9 @@ export const MovieCard = (props: IMovies) => {
         </Typography>
         <Box sx={{ display: 'flex', position: 'absolute', top: 2, right: 5 }}>
           <GradeIcon sx={{ color: 'yellow' }} fontSize="large" />
-          <Typography variant="body2" color="secondary" sx={{ fontSize: 9, fontWeight: 'bold', position: 'absolute', top: 12, left: 11 }}>{vote_average < 10 ? vote_average.toFixed(1) : vote_average}</Typography>
+          <Typography variant="body2" color="secondary" sx={{ fontSize: 9, fontWeight: 'bold', position: 'absolute', top: 12, left: 11 }}>
+            {vote_average < 10 ? vote_average.toFixed(1) : vote_average}
+          </Typography>
         </Box>
         <Typography variant="body2" color="secondary" sx={{ fontSize: 10, marginBottom: 3 }}>{releaseYear}</Typography>
       </CardContent>
