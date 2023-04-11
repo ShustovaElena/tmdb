@@ -14,7 +14,7 @@ import './styles.css';
 export const MoviePage = () => {
   const { movie } = useAppSelector(state => state.movies);
   const { id, backdrop_path, poster_path, title, genres, release_date, runtime, budget, vote_average, overview, homepage } = movie;
-  const releaseYear = release_date ? (release_date as string).split('-')[0] : 'none';
+  const releaseYear = release_date ? (release_date as string).split('-')[0] : '';
   
   if (id) {
     return (

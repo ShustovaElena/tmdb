@@ -8,3 +8,6 @@ export const PERSON_URL = `https://api.themoviedb.org/3/person/popular?api_key=$
 export const SEARCH_PERSON_URL = `
 https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US`;
 export const PERSON_BY_ID_URL = `https://api.themoviedb.org/3/person/`;
+export const FIRST_ELEMENT = 1;
+export const COUNT_MOVIES_BY_ACTOR_PAGE = 10;
+export const COUNT_SYMBOLS = 400;

@@ -27,6 +27,7 @@ export const Filter = () => {
           value={filterName}
           onChange={handleChange}
           autoWidth
+          autoFocus
           color='secondary'
           sx={{ color: 'var(--text-color)'}}
         >

@@ -1,6 +1,6 @@
 import { useAppSelector } from "../../store/hooks";
 import { Box, Button, Container, Typography, IconButton, Breadcrumbs, Link, Fab } from "@mui/material";
-import { IMG_URL } from '../../constants';
+import { COUNT_MOVIES_BY_ACTOR_PAGE, COUNT_SYMBOLS, IMG_URL } from '../../constants';
 import { Header } from "../../components/Header";
 import GradeIcon from '@mui/icons-material/Grade';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
@@ -19,7 +19,7 @@ export const ActorInfoPage = () => {
   const [overview, setOverview] = useState('');
   const [textButton, setTextButton] = useState('more');
   const [isOpen, setIsOpen] = useState(false);
-  const [numShow, setNumShow] = useState(10);
+  const [numShow, setNumShow] = useState(COUNT_MOVIES_BY_ACTOR_PAGE);
 
   useEffect(() => {
     if (biography) {
@@ -27,7 +27,7 @@ export const ActorInfoPage = () => {
         setOverview(biography);
       }
       if (textButton === 'more') {
-        setOverview((biography as string).slice(0, 400));
+        setOverview((biography as string).slice(0, COUNT_SYMBOLS));
       }
     }
   }, [actorInfo, textButton])
@@ -56,7 +56,7 @@ export const ActorInfoPage = () => {
   }
 
   const handleClickMore = () => {
-      setNumShow(Math.min(numShow + 10, (actorMovie as IActorMovie[]).length))
+      setNumShow(Math.min(numShow + COUNT_MOVIES_BY_ACTOR_PAGE, (actorMovie as IActorMovie[]).length))
   }
 
   const handleFabClick = () => {
@@ -73,12 +73,8 @@ export const ActorInfoPage = () => {
       <Box className="actor-box" sx={{ background: `url(${IMG_URL}${profile_path}) no-repeat`, backgroundSize: '35% 100%', backgroundPosition: '100% 0', minHeight: '100vh', maxWidth: '100vw', overflow: 'hidden'}}>
         <Header />
         <Breadcrumbs separator="›" aria-label="breadcrumb" color="secondary" sx={{ marginLeft: '120px' }}>
-          <Link underline="hover" color="inherit" href="/">
-            Home
-          </Link>
-          <Link underline="hover" color="inherit" href="/actors">
-            Popular actors
-          </Link>
+          <Link underline="hover" color="inherit" href="/">Home</Link>
+          <Link underline="hover" color="inherit" href="/actors">Popular actors</Link>
           <Typography color="secondary">{name}</Typography>
         </Breadcrumbs>
         <Container sx={{ display: 'flex', gap: '80px', alignItems: 'flex-end', height: '75vh', maxWidth: '100vw'}}>
